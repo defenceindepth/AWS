@@ -35,3 +35,12 @@ resource "aws_iam_user_policy_attachment" "desola_admin_attachment" {
   user       = aws_iam_user.desola_user.name
   policy_arn = "arn:aws:iam::aws:policy/AdministratorAccess"
 }
+terraform {
+  backend "s3" {
+    bucket         = "desolalolu-terraform-bucket"
+    key            = "terraform.tfstate"
+    region         = "your-aws-region"
+    encrypt        = true
+    dynamodb_table = "terraform_locks"
+  }
+}
