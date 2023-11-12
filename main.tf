@@ -15,13 +15,15 @@ resource "aws_iam_user" "desola_user" {
 }
 
 resource "aws_iam_group_membership" "lolu_membership" {
-  name = aws_iam_group.production_group.name
+  name  = aws_iam_group.production_group.name
   users = [aws_iam_user.lolu_user.name]
+  group = aws_iam_group.production_group.name
 }
 
 resource "aws_iam_group_membership" "desola_membership" {
-  name = aws_iam_group.production_group.name
+  name  = aws_iam_group.production_group.name
   users = [aws_iam_user.desola_user.name]
+  group = aws_iam_group.production_group.name
 }
 
 resource "aws_iam_user_policy_attachment" "lolu_admin_attachment" {
